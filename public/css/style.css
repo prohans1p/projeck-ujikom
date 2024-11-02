@@ -1,0 +1,131 @@
+.c1{
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar{
+    background-color: rgb(90, 99, 156);
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column
+}
+
+.main{
+    background-color: rgb(245, 247, 248);
+    flex-grow: 1;
+}
+
+.sidebar .description-header{
+ font-style: normal;   
+ font-weight: 900;
+ font-size: 13x;
+ line-height: 16px;
+ text-align: center;
+ color: white;
+ white-space: nowrap;
+}
+
+.sidebar a{
+    text-decoration: none;
+}
+
+.sidebar .ilustration{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 10px 0 22px 0;
+    box-sizing: border-box;
+}
+
+.description{
+ font-style: normal;   
+ font-weight: 900;
+ font-size: auto;
+ line-height: 16px;
+ text-align: center;
+ color: white;
+}
+
+.i1{
+    color: white;
+}
+
+
+.sidebar .main-content .list-item .i1{
+    margin-right: 12px;
+}
+
+.sidebar .main-content .list-item{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 12px 10px;
+   border-radius: 8px ;
+   transition: all ease-in .2s ;
+}
+
+.sidebar .main-content .list-item:hover{
+    background:rgb(155, 134, 189) ;
+    transition: all ease-in .2s;   
+}
+
+.navbar {
+    background-color: rgb(90, 99, 156);
+    padding: 8px;
+}
+
+ .card-container {
+    display: flex;
+    justify-content: space; 
+    padding: 8px;
+    justify-content: center;
+  }
+  .cc {
+    width: 150px;
+    padding: 5px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font: normal;
+  
+  }
+ 
+  .c2 {
+    margin-right: 30px;
+    border-left: 5px solid orange;
+  }
+ 
+  .c3{
+    margin-right: 30px;
+    border-left: 5px solid blueviolet ;
+  }
+
+  .c4{
+    margin-right: 30px;
+    border-left: 5px solid rgb(22, 185, 87) ;
+  }
+
+  .c5{
+    margin-right: 30px;
+    border-left: 5px solid rgb(226, 183, 43) ;
+  }
+
+  .c6{
+   width: auto; 
+   
+  }
+
+  .c7{
+    width: 150px;
+    padding: 5px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font: normal;
+  }
+
+  .c8{
+    margin-right: 30px;
+    border-left: 5px solid rgb(155, 126, 189) ;
+  }
