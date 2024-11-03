@@ -16,6 +16,7 @@ class BarangController extends Controller
      */
     public function index()
     {
+
         $barangs = Barang::latest()->paginate();
         return view('admin.barang.index', compact('barangs'));
     }

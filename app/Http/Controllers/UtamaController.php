@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Barang;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class UtamaController extends Controller
@@ -18,8 +20,13 @@ class UtamaController extends Controller
 
     public function index()
     {
+        $totalbarang = Barang::count();
+        $totalpinjam = Peminjaman::where('status', 'belum kembali')->count();
+        $totalkembali = Peminjaman::where('status', 'sudah kembali')->count();
+        $totaluser = User::count();
+
         $users = User::where('role', 'user')->paginate();
-        return view('admin.dashboard.index', compact('users'));
+        return view('admin.dashboard.index', compact('users','totalbarang', 'totalpinjam', 'totalkembali', 'totaluser'));
     }
 
     /**

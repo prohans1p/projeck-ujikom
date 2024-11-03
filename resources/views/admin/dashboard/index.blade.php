@@ -8,21 +8,25 @@
   <div class="c2 cc card">
     <div class="card-body">
       Barang
+      <p class="card-text">{{$totalbarang}}</p>
     </div>
   </div>
   <div class="c3 cc card">
     <div class="card-body">
       Di Pinjam
+      <p class="card-text">{{$totalpinjam}}</p>
     </div>
   </div>
   <div class="c4 cc card">
       <div class="card-body">
         Di kembalikan
+        <p class="card-text">{{$totalkembali}}</p>
       </div>
     </div>
     <div class="c5 cc card">
       <div class="card-body">
-        User
+        total
+        <p class="card-text">{{$totaluser}}</p>
       </div>
     </div>
 </div>
