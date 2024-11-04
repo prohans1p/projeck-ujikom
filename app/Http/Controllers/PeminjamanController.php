@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
@@ -12,7 +13,11 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $peminjamen = Peminjaman::latest()->paginate();
+        if(Auth::user()->role === 'admin'){
+            $peminjamen = Peminjaman::latest()->paginate();
+        }else{
+            $peminjamen = Peminjaman::where('user_id', Auth::id())->latest()->paginate();
+        }
         return view('admin.peminjaman.index', compact('peminjamen'));
     }
 

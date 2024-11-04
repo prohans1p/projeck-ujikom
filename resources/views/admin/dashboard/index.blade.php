@@ -25,7 +25,7 @@
     </div>
     <div class="c5 cc card">
       <div class="card-body">
-        total
+        user/admin
         <p class="card-text">{{$totaluser}}</p>
       </div>
     </div>

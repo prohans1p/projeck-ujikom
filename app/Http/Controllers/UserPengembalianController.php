@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -15,7 +16,11 @@ class UserPengembalianController extends Controller
      */
     public function index()
     {
-        $peminjamen = Peminjaman::latest()->paginate();
+        if(Auth::user()->role === 'admin'){
+            $peminjamen = Peminjaman::latest()->paginate();
+        }else{
+            $peminjamen = Peminjaman::where('user_id', Auth::id())->latest()->paginate();
+        }
         $barangs = Barang::latest()->paginate();
         return view('user.pmb.index', compact('peminjamen', 'barangs'));
     }

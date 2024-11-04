@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserPeminjamanController extends Controller
 {
@@ -13,7 +14,11 @@ class UserPeminjamanController extends Controller
      */
     public function index()
     {
-        $peminjamen = Peminjaman::latest()->paginate();
+        if(Auth::user()->role === 'admin'){
+            $peminjamen = Peminjaman::latest()->paginate();
+        }else{
+            $peminjamen = Peminjaman::where('user_id', Auth::id())->latest()->paginate();
+        }
 
         return view('user.pmj.index', compact('peminjamen'));
     }
@@ -33,6 +38,8 @@ class UserPeminjamanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            // 'user_id' => Auth::id(),
+            'user_id' => 'required|exists:users,id|in:' . Auth::id(),
             'nama_peminjam' => 'required|max:60',
             'kode_barang' => 'required|max:60',
             'jumlah' => 'required|numeric|min:1',
@@ -42,10 +49,12 @@ class UserPeminjamanController extends Controller
             // 'status' => 'required|max:60',
         ]);
 
+
         $barangs = Barang::where('kode_barang', $request->kode_barang)->first();
 
         if($barangs && $barangs->jumlah >= $request->jumlah){
         Peminjaman::create([
+            'user_id' => $request->user_id,
             'nama_peminjam' => $request->nama_peminjam,
             'kode_barang' => $request->kode_barang,
             'jumlah' => $request->jumlah,

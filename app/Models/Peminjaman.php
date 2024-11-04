@@ -15,6 +15,7 @@ class Peminjaman extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'image',
         'nama_peminjam',
         'kode_barang',
@@ -24,4 +25,8 @@ class Peminjaman extends Model
         'keperluan',
         'status',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

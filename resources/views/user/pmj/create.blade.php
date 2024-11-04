@@ -8,6 +8,8 @@
             <form action="{{ route('user.pmj.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
+                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+
                 <div class="mb-3">
                     <label for="nama_peminjam" class="form-label">Nama Peminjam</label>
                     <input type="text" name="nama_peminjam" class="form-control @error('nama_peminjam') is-invalid @enderror">
