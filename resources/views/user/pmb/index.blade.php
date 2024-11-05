@@ -23,9 +23,9 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-4 d-flex justify-content-end">
+                    {{-- <div class="col-md-6 col-sm-4 d-flex justify-content-end">
                         <input type="text" id="search" class="form-control form-control-sm w-50 ml-auto" placeholder="search...">
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                     <table id="datatablesSimple" class="table table-bordered">
