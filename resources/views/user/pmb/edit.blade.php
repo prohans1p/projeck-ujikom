@@ -54,16 +54,17 @@
             </div>
 
             <div class="mb-3">
-                <label for="nama_barang" class="form-label">Tanggal pinjam</label>
-                <input type="date" name="tgl_pinjam" class="form-control" value="{{ $peminjamen->tgl_pinjam }}" readonly >
+                {{-- <label for="nama_barang" class="form-label">Tanggal pinjam</label> --}}
+                <input type="hidden" name="tgl_pinjam" class="form-control" value="{{ $peminjamen->tgl_pinjam }}" readonly >
                 @error('tgl_pinjam')
                 <div> {{$message}} </div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label for="nama_barang" class="form-label">Tanggal kembali</label>
-                <input type="date" name="tgl_kembali" class="form-control" value="{{ $peminjamen->tgl_kembali }}" required>
+                <label for="tgl_kembali" class="form-label">Tanggal Kembali</label>
+                <input type="date" name="tgl_kembali" id="tgl_kembali" class="form-control"
+                       value="{{ old('tgl_kembali', $peminjamen->tgl_kembali ?? date('Y-m-d')) }}" readonly>
                 @error('tgl_kembali')
                 <div> {{$message}} </div>
                 @enderror
@@ -85,5 +86,15 @@
         </div>
     </div>
 </div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const tglKembaliInput = document.getElementById('tgl_kembali');
+        if (!tglKembaliInput.value) {
+            const today = new Date().toISOString().split('T')[0];
+            tglKembaliInput.value = today;
+        }
+    });
+</script>
 
 @endsection

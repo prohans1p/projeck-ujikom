@@ -42,6 +42,7 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
+                  <th scope="col">image</th>
                   <th scope="col">Kode barang</th>
                   <th scope="col">Nama barang</th>
                   <th scope="col">Kategori</th>
@@ -53,6 +54,13 @@
                 @forelse ($barangs as $barang)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>
+                        @if($barang->image)
+                            <img src="{{ asset('storage/public/image/' . $barang->image) }}" alt="Gambar Pengembalian" style="width: 100px; height: auto;">
+                        @else
+                            <span>Gambar Belum Tersedia</span>
+                        @endif
+                    </td>
                     <td>{{ $barang->kode_barang }}</td>
                     <td>{{ $barang->nama_barang }}</td>
                     <td>{{ $barang->kategori }}</td>

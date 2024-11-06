@@ -34,7 +34,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    {{-- <th>id</th> --}}
+                                    <th>image</th>
                                     <th>Kode Barang</th>
                                     <th>Nama Barang</th>
                                     <th>Kategori</th>
@@ -47,7 +47,13 @@
                                 @forelse ($barangs as $barang)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    {{-- <th>{{ $barang->id }}</th> --}}
+                                    <td>
+                                        @if($barang->image)
+                                            <img src="{{ asset('storage/public/image/' . $barang->image) }}" alt="Gambar Pengembalian" style="width: 100px; height: auto;">
+                                        @else
+                                            <span>Gambar Belum Tersedia</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $barang->kode_barang }}</td>
                                     <td>{{ $barang->nama_barang }}</td>
                                     <td>{{ $barang->kategori }}</td>

@@ -7,8 +7,28 @@
         <h5 class="card-header">TAMBAH BARANG</h5>
         <div class="card-body">
           <h5 class="card-title"></h5>
-          <form action="{{ route('barang.store') }}" method="POST">
+          <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+
+            <div class="form-group mb-3">
+                <label class="font-weight-bold">image</label>
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                @error('image')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            {{-- <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" name="image" class="form-control" >
+                <small><img src="{{ asset('storage/public/image/' . $barang->image) }}" alt="gambar tidak masuk" style="width: 100px; height: auto;"></small>
+                @error('image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div> --}}
 
             <div class="mb-3">
                 <label for="kode_barang" class="form-label">Kode Barang</label>

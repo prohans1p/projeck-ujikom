@@ -58,8 +58,10 @@
                                 <td>{{ $peminjaman->keperluan}}</td>
                                 <td>{{ $peminjaman->status}}</td>
                                 <td>
-                                    <a href="{{ route('user.pmb.edit', $peminjaman->id)}}" class="btn btn-primary btn-sm ">Edit</a>
-                              </td>
+                                    @if ($peminjaman->status !== 'sudah kembali') 
+                                        <a href="{{ route('user.pmb.edit', $peminjaman->id) }}" class="btn btn-primary btn-sm">Kembali</a>
+                                    @endif
+                                </td>
                             </tr>
                             @empty
                             <div class="alert alert-danger ">

@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="bi bi-shop"></i>
-                <a href="{{ route('user.pmj.create') }} "  type="button" style="float:right;" class="btn btn-success position-relative">Tambah Barang</a>
+                <a href="{{ route('user.pmj.create') }} "  type="button" style="float:right;" class="btn btn-success position-relative">Pinjam Barang</a>
             </div>
             <div class="card-body mt-0">
                 <div class="row mb-3 justify-content-between align-items-center">
@@ -43,7 +43,9 @@
                         </thead>
 
                         <tbody>
+
                             @forelse ($peminjamen as $peminjaman )
+                            @if ($peminjaman->status !== 'sudah kembali')
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $peminjaman->nama_peminjam }}</td>
@@ -63,16 +65,15 @@
                                         </form> --}}
                                   {{-- </td> --}}
                             </tr>
+                            @endif
                             @empty
                             <div class="alert alert-danger">
                                 Data belum ada
                             </div>
-
                             @endforelse
 
-
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
                     {{ $peminjamen->links() }}
                 </div>
             </div>

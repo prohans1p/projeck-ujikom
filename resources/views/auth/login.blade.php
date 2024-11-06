@@ -12,10 +12,10 @@
         <div class="login">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <h1>LOGIN</h1>
+                <h4 class="p-2">PEMINJAMAN BARANG</h4>
                 <hr>
                 <div class="c10 row mb-3">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label text-md-end">Email</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label text-md-end">{{ __('email') }}</label>
                   <div class="col-sm-10">
                     <input id="inputEmail3" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     @error('email')

@@ -15,10 +15,15 @@ class Barang extends Model
      * @var array
      */
     protected $fillable = [
+        'image',
         'kode_barang',
         'nama_barang',
         'kategori',
         'merk',
         'jumlah',
     ];
+
+    public function peminjaman(){
+        return $this->belongsTo(Peminjaman::class, 'kode_barang');
+    }
 }

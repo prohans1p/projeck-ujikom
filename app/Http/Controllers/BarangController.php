@@ -35,19 +35,38 @@ class BarangController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'kode_barang' => 'required|max:50',
+        'image' => 'image|mimes:png,jpg,jpeg|max:2048',
+        'kode_barang' => 'required',
         'nama_barang' => 'required|max:60',
         'kategori' => 'required|max:60',
         'merk' => 'required|max:60',
         'jumlah' => 'required|numeric',
       ]);
 
+      $kodeBarang = $request->kode_barang;
+      $barangawal = $kodeBarang;
+
+      $i = 1;
+      while (Barang::where('kode_barang', $kodeBarang)->exists()){
+        $kodeBarang = $barangawal . '-' . $i;
+        $i++;
+      }
+
+      $imageName = null;
+      if ($request->hasFile('image')) {
+          $image = $request->file('image');
+          $imageName = $image->hashName();
+          $image->storeAs('public/image', $imageName);
+      }
+
+
       Barang::create([
-        'kode_barang' => $request->kode_barang,
+        'kode_barang' => $kodeBarang,
         'nama_barang' => $request->nama_barang,
         'kategori' => $request->kategori,
         'merk' => $request->merk,
         'jumlah' => $request->jumlah,
+        'image' => $imageName,
       ]);
 
         return redirect()->route('barang.index')->with(['succes' => 'data berhasil ditambahkan']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Peminjaman;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -55,7 +56,8 @@ class UserPengembalianController extends Controller
     public function edit(string $id)
     {
         $peminjamen = Peminjaman::findOrFail($id);
-        return view('user.pmb.edit', compact('peminjamen'));
+        $barangs = Barang::all();
+        return view('user.pmb.edit', compact('peminjamen', 'barangs'));
     }
 
     /**
@@ -95,12 +97,14 @@ class UserPengembalianController extends Controller
         ]);
        }
 
+       $today = Carbon::now();
+
        $peminjamen->update([
         'nama_peminjam' => $request->nama_peminjam,
         'kode_barang' => $request->kode_barang,
         'jumlah' => $request->jumlah,
-        'tgl_pinjam' => $request->tgl_pinjam,
-        'tgl_kembali' => $request->tgl_kembali,
+        'tgl_pinjam' => Carbon::today(),
+        'tgl_kembali' => Carbon::today(),
         'keperluan' => $request->keperluan,
         // 'status' => $request->status,
        ]);

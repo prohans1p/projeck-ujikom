@@ -10,13 +10,24 @@
 
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="nama_peminjam" class="form-label">Nama Peminjam</label>
                     <input type="text" name="nama_peminjam" class="form-control @error('nama_peminjam') is-invalid @enderror">
                     @error('nama_peminjam')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
+                </div> --}}
+
+                <div class="mb-3">
+                    <label for="nama_peminjam" class="form-label">Nama Peminjam</label>
+                    <input type="hidden" name="nama_peminjam" value="{{ Auth::user()->name }}" class="form-control">
+
+                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" readonly>
+                    @error('nama_peminjam')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
+
 
                 {{-- <div class="mb-3">
                     <label for="kode_barang" class="form-label">Kode Barang</label>
@@ -32,7 +43,7 @@
                         <option value="">Pilih Kode Barang</option>
                         @foreach($barangs as $barang)
                             <option value="{{ $barang->kode_barang }}" {{ $barang->kode_barang === $barang->kode_barang ? 'selected' : 'kode_barang' }}>
-                                {{ $barang->kode_barang }} - {{ $barang->nama_barang }} <!-- Menampilkan kode dan nama barang -->
+                                {{ $barang->kode_barang }} - {{ $barang->nama_barang }} 
                             </option>
                         @endforeach
                     </select>
@@ -68,15 +79,15 @@
 
                 <div class="mb-3">
                     <label for="tgl_pinjam" class="form-label">Tanggal Pinjam</label>
-                    <input type="date" name="tgl_pinjam" class="form-control @error('tgl_pinjam') is-invalid @enderror">
+                    <input type="date" name="tgl_pinjam" id="tgl_pinjam" class="form-control @error('tgl_pinjam') is-invalid @enderror" value="{{ old('tgl_pinjam') }}" readonly>
                     @error('tgl_pinjam')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="tgl_kembali" class="form-label">Tanggal Kembali</label>
-                    <input type="date" name="tgl_kembali" class="form-control @error('tgl_kembali') is-invalid @enderror">
+                    {{-- <label for="tgl_pinjam" class="form-label">Tanggal kembali</label> --}}
+                    <input type="hidden" name="tgl_kembali" id="tgl_kembali" class="form-control @error('tgl_kembali') is-invalid @enderror" value="{{ old('tgl_kembali') }}" >
                     @error('tgl_kembali')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
@@ -88,4 +99,14 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('tgl_pinjam').value = today;
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T');
+        document.getElementById('tgl_kembali').value = today;
+    });
+</script>
 @endsection

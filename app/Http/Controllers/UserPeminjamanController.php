@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Peminjaman;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,6 +50,7 @@ class UserPeminjamanController extends Controller
             // 'status' => 'required|max:60',
         ]);
 
+        $today = Carbon::now();
 
         $barangs = Barang::where('kode_barang', $request->kode_barang)->first();
 
@@ -58,8 +60,8 @@ class UserPeminjamanController extends Controller
             'nama_peminjam' => $request->nama_peminjam,
             'kode_barang' => $request->kode_barang,
             'jumlah' => $request->jumlah,
-            'tgl_pinjam' => $request->tgl_pinjam,
-            'tgl_kembali' => $request->tgl_kembali,
+            'tgl_pinjam' => Carbon::today(),
+            'tgl_kembali' => Carbon::today(),
             'keperluan' => $request->keperluan,
             // 'status' => $request->status,
         ]);
