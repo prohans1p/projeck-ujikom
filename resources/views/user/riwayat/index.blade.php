@@ -3,14 +3,15 @@
 @section('sip')
     <div class="main">
         <div class="container p-4">
-            <h3>DAFTAR PENGEMBALIAN BARANG</h3>
         <div class="card">
             <div class="card-header">
-                <i class="bi bi-shop"></i>
+                <h5 class="bi bi-shop"></h5>
+                <i ></i>
              {{-- <a href="{{ route('pmb.create') }} "  type="button" style="float:right;" class="btn btn-success position-relative" >Tambah Barang</a> --}}
             </div>
             <div class="card-body mt-0">
                 <div class="row mb-3 justify-content-between align-items-center">
+                   <h5 class="text-center"> Riwayat Peminjaman </h5>
                     <div class="col-md-6 col-sm-8">
                         <div class="form-inline">
                             <label for="entries" class="mr-2">show</label>
@@ -31,26 +32,19 @@
                     <table id="datatablesSimple" class="table table-bordered">
                         <thead>
                             <th>No</th>
+                            <th>Image</th>
                             <th>Kode Barang</th>
                             <th>Jumlah Barang</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
                             <th>Keperluan</th>
                             <th>Status</th>
-                            <th>Image</th>
                         </thead>
 
                         <tbody>
                             @forelse ($peminjamen as $peminjaman)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-
-                                <td>{{$peminjaman->kode_barang}}</td>
-                                <td>{{$peminjaman->jumlah}}</td>
-                                <td>{{$peminjaman->tgl_pinjam}}</td>
-                                <td>{{$peminjaman->tgl_kembali}}</td>
-                                <td>{{ $peminjaman->keperluan}}</td>
-                                <td>{{ $peminjaman->status}}</td>
                                 <td>
                                     @if($peminjaman->image)
                                         <img src="{{ asset('storage/storage/public/image/' . $peminjaman->image) }}" alt="Gambar Pengembalian" style="width: 100px; height: auto;">
@@ -58,11 +52,17 @@
                                         <span>Gambar Belum Tersedia</span>
                                     @endif
                                 </td>
-                                <td>
+                                <td>{{$peminjaman->kode_barang}}</td>
+                                <td>{{$peminjaman->jumlah}}</td>
+                                <td>{{$peminjaman->tgl_pinjam}}</td>
+                                <td>{{$peminjaman->tgl_kembali}}</td>
+                                <td>{{ $peminjaman->keperluan}}</td>
+                                <td>{{ $peminjaman->status}}</td>
+                                {{-- <td>
                                     @if ($peminjaman->status !== 'sudah kembali')
                                         <a href="{{ route('user.pmb.edit', $peminjaman->id) }}" class="btn btn-primary btn-sm">Kembali</a>
                                     @endif
-                                </td>
+                                </td> --}}
                             </tr>
                             @empty
                             <div class="alert alert-danger ">

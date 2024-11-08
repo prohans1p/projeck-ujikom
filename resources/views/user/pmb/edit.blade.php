@@ -79,16 +79,16 @@
             </div> --}}
 
 
-            <button type="reset" class="btn btn-danger">cansel</button>
-            <button type="submit" class="btn btn-primary me-2">save</button>
 
+            <button type="submit" class="btn btn-primary me-2">save</button>
+            <a href="{{ route('user.pmb.index')}}" type="reset" class="btn btn-danger">cancel</a>
         </form>
         </div>
     </div>
 </div>
 
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const tglKembaliInput = document.getElementById('tgl_kembali');
         if (!tglKembaliInput.value) {
             const today = new Date().toISOString().split('T')[0];

@@ -37,6 +37,13 @@
         </div><hr>
 
         <div class="list-item">
+            <a href="{{ route('user.riwayat.index')}}">
+                <i class="bi bi-speedometer2 i1"></i>
+                <span class="description"> Riwayat</span>
+            </a>
+        </div><hr>
+
+        <div class="list-item">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
                 @csrf
                 <button type="submit" style="border: none; background: none; color: inherit; cursor: pointer;">

@@ -73,7 +73,7 @@
             </div>
 
                 <button type="submit" class="btn btn-primary me-2">save</button>
-                <button type="reset" class="btn btn-danger">cansel</button>
+                <a href="{{ route('barang.index')}}"  type="reset" class="btn btn-danger">cansel</a>
         </form>
         </div>
       </div>

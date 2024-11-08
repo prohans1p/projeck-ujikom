@@ -36,6 +36,7 @@
  <div class="container p-4">
   <div class="c6 card">
       <div class="card-body">
+        <H5 class="container p-2 text-center">DAFTAR USER</H5>
           <table class="table table-bordered">
               <thead>
                 <tr>

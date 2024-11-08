@@ -42,9 +42,9 @@
                                     <th>Jumlah</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @forelse ($barangs as $barang)
+                                @if ($barang->jumlah !== 0)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
@@ -71,6 +71,7 @@
 
                                     {{-- </td> --}}
                                 </tr>
+                                @endif
                             @empty
                                 <tr>
                                     <td colspan="8" class="text-center">Data tidak ditemukan</td>

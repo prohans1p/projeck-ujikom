@@ -3,7 +3,7 @@
 @section('content')
     <div class="main">
         <div class="container p-4">
-
+            <h1>PEMINJAMAN BARANG</h1>
         <div class="card">
             <div class="card-header">
                 <i class="bi bi-shop"></i>

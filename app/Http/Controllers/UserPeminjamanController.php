@@ -45,7 +45,7 @@ class UserPeminjamanController extends Controller
             'kode_barang' => 'required|max:60',
             'jumlah' => 'required|numeric|min:1',
             'tgl_pinjam' => 'required|date',
-            'tgl_kembali' => 'required|date',
+            // 'tgl_kembali' => 'required|date',
              'keperluan' => 'required|max:60',
             // 'status' => 'required|max:60',
         ]);
@@ -61,7 +61,8 @@ class UserPeminjamanController extends Controller
             'kode_barang' => $request->kode_barang,
             'jumlah' => $request->jumlah,
             'tgl_pinjam' => Carbon::today(),
-            'tgl_kembali' => Carbon::today(),
+            'tgl_kembali' => $request->tgl_kembali,
+            // 'tgl_kembali' => Carbon::today(),
             'keperluan' => $request->keperluan,
             // 'status' => $request->status,
         ]);

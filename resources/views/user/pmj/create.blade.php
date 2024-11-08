@@ -43,7 +43,7 @@
                         <option value="">Pilih Kode Barang</option>
                         @foreach($barangs as $barang)
                             <option value="{{ $barang->kode_barang }}" {{ $barang->kode_barang === $barang->kode_barang ? 'selected' : 'kode_barang' }}>
-                                {{ $barang->kode_barang }} - {{ $barang->nama_barang }} 
+                                {{ $barang->kode_barang }} - {{ $barang->nama_barang }}
                             </option>
                         @endforeach
                     </select>
@@ -84,17 +84,17 @@
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <div class="mb-3">
+{{--
+                <div class="mb-3"> --}}
                     {{-- <label for="tgl_pinjam" class="form-label">Tanggal kembali</label> --}}
-                    <input type="hidden" name="tgl_kembali" id="tgl_kembali" class="form-control @error('tgl_kembali') is-invalid @enderror" value="{{ old('tgl_kembali') }}" >
+                    {{-- <input type="hidden" name="tgl_kembali" id="tgl_kembali" class="form-control @error('tgl_kembali') is-invalid @enderror" value="{{ old('tgl_kembali') }}" >
                     @error('tgl_kembali')
                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary me-2">Save</button>
-                <button type="reset" class="btn btn-danger">Cancel</button>
+                <a href="{{ route('user.pmj.index')}}" type="reset" class="btn btn-danger">cancel</a>
             </form>
         </div>
     </div>
@@ -104,9 +104,9 @@
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('tgl_pinjam').value = today;
     });
-    document.addEventListener('DOMContentLoaded', function() {
-        const today = new Date().toISOString().split('T');
-        document.getElementById('tgl_kembali').value = today;
-    });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const today = new Date().toISOString().split('T');
+    //     document.getElementById('tgl_kembali').value = today;
+    // });
 </script>
 @endsection

@@ -52,6 +52,7 @@
               </thead>
               <tbody>
                 @forelse ($barangs as $barang)
+                @if ($barang->jumlah !== 0)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
@@ -68,6 +69,7 @@
                     <td>{{ $barang->jumlah }}</td>
 
                 </tr>
+                @endif
                 @empty
 
                 @endforelse

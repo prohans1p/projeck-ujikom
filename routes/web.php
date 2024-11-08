@@ -7,6 +7,7 @@ use App\Http\Controllers\UserBarangController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserPeminjamanController;
 use App\Http\Controllers\UserPengembalianController;
+use App\Http\Controllers\UserRiwayatController;
 use App\Http\Controllers\UtamaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth'], 'as' => 'user.'], fu
     Route::resource('daftar', UserBarangController::class);
     Route::resource('user/pmj', UserPeminjamanController::class);
     Route::resource('user/pmb', UserPengembalianController::class);
+    Route::resource('user/riwayat', UserRiwayatController::class);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
